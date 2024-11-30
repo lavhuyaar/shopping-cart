@@ -1,18 +1,15 @@
 import { useOutletContext } from "react-router-dom";
-
-interface Product {
-  title: string;
-  id: number;
-}
+import ProductCard from "../ProductCard/ProductCard";
+import { Product } from "../../types/types";
 
 function Shop() {
   const products = useOutletContext<Product[]>();
   return (
-    <>
-      {products.map((product, index) => (
-        <div key={index}>{product.title}</div>
+    <div className="products-container" key='products-container'>
+      {products.map((product) => (
+        <ProductCard key={product.title} product={product} />
       ))}
-    </>
+    </div>
   );
 }
 

@@ -7,13 +7,16 @@ const routes = [
     path: "/",
     element: <App />,
     children: [
-      { path: "/cart", element: <Cart /> },
-      {
-        path: "/shop",
-        element: <Shop />,
-      },
-    ],
-  },
+        {path: '/cart',
+            element: <Cart />
+        },
+        {
+            path: "/shop",
+            element: <Shop />,
+          }
+    ]
+  }
+  
 ];
 
 export default routes;

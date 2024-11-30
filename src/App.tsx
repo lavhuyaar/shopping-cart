@@ -2,20 +2,11 @@ import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
-
-
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  image: string;
-}
+import { Product } from "./types/types";
 
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
   const NUMBER_OF_PRODUCTS: number = 12;
-
 
   useEffect(() => {
     const getProducts = async () => {
@@ -32,7 +23,9 @@ function App() {
   return (
     <>
       <Navbar />
-      <Outlet context={products}/>
+      <main>
+        <Outlet context={products} />
+      </main>
       <Footer />
     </>
   );
