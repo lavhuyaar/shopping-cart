@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import Navbar from "./components/Navbar/Navbar";
+import { Outlet } from "react-router-dom";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -24,10 +27,13 @@ function App() {
     getProducts();
   }, []);
 
-  return( <>
-
-  <h1>Hello dostooooo</h1>
-  </>)
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+      <Footer />
+    </>
+  );
 }
 
 export default App;
