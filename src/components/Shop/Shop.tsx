@@ -1,7 +1,19 @@
-function Shop() {
-  return (
-    <div>this is shop xd</div>
-  )
+import { useOutletContext } from "react-router-dom";
+
+interface Product {
+  title: string;
+  id: number;
 }
 
-export default Shop
+function Shop() {
+  const products = useOutletContext<Product[]>();
+  return (
+    <>
+      {products.map((product, index) => (
+        <div key={index}>{product.title}</div>
+      ))}
+    </>
+  );
+}
+
+export default Shop;

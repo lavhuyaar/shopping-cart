@@ -5,15 +5,14 @@ import Shop from "../components/Shop/Shop";
 const routes = [
   {
     path: "/",
-    element: <App />
-  },
-  {
-    path: "/cart",
-    element: <Cart />,
-  },
-  {
-    path: "/shop",
-    element: <Shop />,
+    element: <App />,
+    children: [
+      { path: "/cart", element: <Cart /> },
+      {
+        path: "/shop",
+        element: <Shop />,
+      },
+    ],
   },
 ];
 

@@ -3,17 +3,19 @@ import Navbar from "./components/Navbar/Navbar";
 import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 
+
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  image: string;
+}
+
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
   const NUMBER_OF_PRODUCTS: number = 12;
 
-  interface Product {
-    id: number;
-    title: string;
-    price: string;
-    description: string;
-    image: string;
-  }
 
   useEffect(() => {
     const getProducts = async () => {
@@ -30,7 +32,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <Outlet />
+      <Outlet context={products}/>
       <Footer />
     </>
   );
