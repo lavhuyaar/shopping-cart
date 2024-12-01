@@ -81,13 +81,26 @@ button:focus-visible {
 }
 
 body {
-  background-color: rgb(100, 116, 139);
-  color: white;
   font-family: "Space Mono", monospace, Arial, Helvetica, sans-serif;
+  background-color: #1F1B24;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 main {
-  min-height: 90vh;
-  margin-bottom: 20px;
-  margin-top: 80px;
+  min-height: 85vh;
+}
+
+.product-img-container {
+  filter: sepia(30%) saturate(100%) brightness(90%)
+}
+
+.product {
+  transition: all .5s ease;
+}
+
+.product:hover {
+    transform: translate3D(0,-1px,0) scale(1.05);
+    transition: all .4s ease;
 }

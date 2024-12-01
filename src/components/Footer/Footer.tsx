@@ -1,7 +1,7 @@
 function Footer() {
   return (
-   <footer className="py-1 flex align-center justify-center relative bottom-0 bg-slate-500 w-full">
-    <div>Made by Lav 2024</div>
+   <footer className="py-2 flex align-center justify-center text-[#BB86F6] w-full bg-[#1F1B24]">
+    <div className="text-center">Copyright &#169; 2024, lavhuyaar. All Rights Reserved</div>
    </footer>
   )
 }

@@ -5,3 +5,10 @@ export type Product = {
     description: string;
     image: string;
   }
+
+  export type OutletContextType = {
+    products: Product[],
+    cartProducts: Product[],
+    handleAddToCart: (product: Product) => void,
+    handleRemoveFromCart: (index: number) => void
+  }
