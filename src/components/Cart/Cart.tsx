@@ -1,7 +1,10 @@
 
 function Cart() {
   return (
-    <div>this is cart xd</div>
+    <main className="bg-blue-600">
+<div>this is cart xd</div>
+    </main>
+    
   )
 }
 

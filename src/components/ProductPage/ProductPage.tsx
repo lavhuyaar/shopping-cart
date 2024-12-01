@@ -7,15 +7,16 @@ function ProductPage() {
   const products = useOutletContext<Product[]>();
   const product = products.find((p) => p.id === Number(id));
 
-
   if (!product) {
     return <p>Product not found!</p>;
   }
 
   return (
     <>
-      <div>{product.title}</div>
-      lol product page
+      <main className="bg-green-400 min-h-[90vh]">
+        <div>{product.title}</div>
+        lol product page
+      </main>
     </>
   );
 }

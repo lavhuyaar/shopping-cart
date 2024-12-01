@@ -23,9 +23,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <main>
         <Outlet context={products} />
-      </main>
       <Footer />
     </>
   );
