@@ -1,88 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/* Space Mono font-family */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-/* :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
-
 * {
   margin: 0;
   padding: 0;
-
 }
 
 body {
   font-family: "Space Mono", monospace, Arial, Helvetica, sans-serif;
-  background-color: #1F1B24;
+  background-color: #1f1b24;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -92,15 +22,25 @@ main {
   min-height: 85vh;
 }
 
+/* Tint filter on image of Product card */
 .product-img-container {
-  filter: sepia(30%) saturate(100%) brightness(90%)
+  filter: sepia(30%) saturate(100%) brightness(90%);
 }
 
+/* Product card animation */
 .product {
-  transition: all .5s ease;
+  transition: all 0.5s ease;
+}
+.product:hover {
+  transform: translate3D(0, -1px, 0) scale(1.05);
+  transition: all 0.4s ease;
 }
 
-.product:hover {
-    transform: translate3D(0,-1px,0) scale(1.05);
-    transition: all .4s ease;
+/* Shop-icon and Cart-icon in Navbar */
+@media only screen and (max-width: 400px) {
+  .shop-icon,
+  .cart-icon {
+    width: 30px !important;
+    height: 30px !important;
+  }
 }

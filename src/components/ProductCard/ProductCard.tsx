@@ -7,15 +7,17 @@ type ProductCardProps = {
   product: Product;
 };
 
+//Creates individual card of the product from products array in Shop page
 function ProductCard({ product }: ProductCardProps) {
   const { handleAddToCart, handleIncrementQuantity, handleDecrementQuantity } =
     useOutletContext<OutletContextType>();
 
-  const [quantity, setQuantity] = useState<number>(1);
+  const [quantity, setQuantity] = useState<number>(1); //Quantity
 
   return (
     <>
       <div className="product text-white bg-[#242424] flex flex-col align-center p-3 gap-2 rounded-xl">
+        {/* Clicking the image redirects to the in-detail page of the product */}
         <Link to={`/shop/products/${product.id}`}>
           <div className=" product-img-container object-cover w-full h-[230px] flex items-center justify-center bg-white rounded-xl">
             <img
@@ -31,13 +33,16 @@ function ProductCard({ product }: ProductCardProps) {
           </div>
         </Link>
 
+        {/* Product title */}
         <h3 className="font-bold pt-3 whitespace-nowrap overflow-hidden text-ellipsis text-xl text-white">
           {product.title}
         </h3>
 
+        {/* Product price */}
         <div className="text-lg flex gap-8 items-center justify-between">
           <p>Price: {product.price} $</p>
 
+          {/* Increment button */}
           <div className="flex gap-3">
             <button
               className="font-bold text-lg text-[#BB86F6]"
@@ -46,7 +51,11 @@ function ProductCard({ product }: ProductCardProps) {
             >
               <FaPlus />
             </button>
+
+            {/* Quantity */}
             <div>{quantity}</div>
+
+            {/* Decrement button */}
             <button
               className="font-bold text-lg text-[#BB86F6]"
               type="button"
@@ -57,6 +66,7 @@ function ProductCard({ product }: ProductCardProps) {
           </div>
         </div>
 
+        {/* Add to Cart button; sends an object to add in cartProducts array */}
         <button
           type="button"
           className="p-2  bg-[#BB86F6] mt-2 text-lg font-bold text-[#242424] rounded-xl hover:bg-[#a063e6]"

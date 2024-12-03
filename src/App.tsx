@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
-import Navbar from "./components/Navbar/Navbar";
+import Header from "./components/Header/Header";
 import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import { Product, CartProduct } from "./types/types";
@@ -28,6 +28,7 @@ function App() {
   //Toastify snackbars
   const notifyAddedToCart = () => toast("Product added to the cart!");
   const notifyRemovedFromCart = () => toast("Product removed from the cart.");
+  const notifyCheckout = () => toast("Products ordered!!");
 
   //Adds Product(s) to Cart
   const handleAddToCart = (product: CartProduct): void => {
@@ -86,17 +87,25 @@ function App() {
     }
   };
 
+  //Notifies and clears the Cart when Checkout button is clicked
+  const handleCheckout = () => {
+    setCartProducts([]);
+    notifyCheckout();
+  };
+
   return (
     <>
-      <Navbar />
+      <Header />
       <Outlet
         context={{
           products,
           cartProducts,
+          setCartProducts,
           handleAddToCart,
           handleRemoveFromCart,
           handleIncrementQuantity,
           handleDecrementQuantity,
+          handleCheckout,
         }}
       />
       <ToastContainer />
