@@ -1,35 +1,26 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useParams } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
-import { CartProduct, OutletContextType } from "../../types/types";
+import { OutletContextType, Product } from "../../types/types";
 import { Link } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaPlus, FaMinus } from "react-icons/fa";
 import { useState } from "react";
 
 function ProductPage() {
   const { id } = useParams<{ id: string }>();
   const {
     products,
-    cartProducts,
     handleAddToCart,
     handleIncrementQuantity,
     handleDecrementQuantity,
   } = useOutletContext<OutletContextType>();
 
-  let productInCart: CartProduct | undefined;
-  let product: any;
+  const [quantity, setQuantity] = useState<number>(1);
+  const product: Product | any = products.find(p => p.id === Number(id));
 
-  if (cartProducts.find((p) => p.id === Number(id))) {
-    productInCart = cartProducts.find((p) => p.id === Number(id));
+  if(!product) {
+    return <div className="min-h-[80vh] text-white text-4xl flex items-center justify-center font-bold w-full text-center">Product loading</div>
   }
-
-  if (products.find((p) => p.id === Number(id))) {
-    product = products.find((p) => p.id === Number(id));
-  }
-
-  const [quantity, setQuantity] = useState(
-    productInCart ? productInCart.quantity : 1
-  );
 
   return (
     <>
@@ -47,8 +38,8 @@ function ProductPage() {
           />
         </Link>
 
-        <div className="w-full flex items-center mt-16 p-8 justify-center gap-8">
-          <div className="flex justify-center items-center w-[500px] bg-white rounded-xl object-cover">
+        <div className="w-full flex flex-col items-center mt-16 p-8 justify-center gap-8 lg:flex-row">
+          <div className="flex justify-center items-center md:w-[500px] lg:w-[700px] bg-white rounded-xl object-cover">
             <img
               src={product.image}
               alt={product.title}
@@ -66,34 +57,42 @@ function ProductPage() {
             <article>
               <p className="text-sm">{product.description}</p>
             </article>
-            <div className="text-xl">Price: {product.price} $</div>
-            <div>
-              <button
-                type="button"
-                onClick={() => handleIncrementQuantity(quantity, setQuantity)}
-              >
-                {"+"}
-              </button>
-              <div>{quantity}</div>
-              <button
-                type="button"
-                onClick={() => handleDecrementQuantity(quantity, setQuantity)}
-              >
-                {"-"}
-              </button>
+
+            <div className="text-xl flex gap-14 items-center">
+              <p>Price: {product.price} $</p>
+
+              <div className="flex gap-3">
+                <button
+                  className="font-bold text-xl text-[#BB86F6]"
+                  type="button"
+                  onClick={() => handleIncrementQuantity(quantity, setQuantity)}
+                >
+                  <FaPlus />
+                </button>
+                <div className="text-xl">{quantity}</div>
+                <button
+                  className="font-bold text-xl text-[#BB86F6]"
+                  type="button"
+                  onClick={() => handleDecrementQuantity(quantity, setQuantity)}
+                >
+                  <FaMinus />
+                </button>
+              </div>
             </div>
+
             <button
               type="button"
-              className="p-2  bg-[#BB86F6] mt-2 text-2xl font-bold text-[#242424] rounded-xl hover:bg-[#a063e6] px-10 py-4 w-[300px]"
-              onClick={() =>
+              className="p-2 bg-[#BB86F6] mt-2 text-2xl font-bold text-[#242424] rounded-xl hover:bg-[#a063e6] px-10 py-4 sm:w-[300px]"
+              onClick={() => {
                 handleAddToCart({
                   id: product.id,
                   title: product.title,
                   price: product.price,
-                  image: product.image,
                   quantity: quantity,
-                })
-              }
+                  image: product.image,
+                });
+                setQuantity(1);
+              }}
             >
               Add to cart
             </button>

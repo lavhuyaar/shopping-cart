@@ -11,8 +11,14 @@ export type OutletContextType = {
   cartProducts: CartProduct[];
   handleAddToCart: (product: CartProduct) => void;
   handleRemoveFromCart: (index: number) => void;
-  handleIncrementQuantity: (quantity: number, setQuantity: (number:number) => void) => void;
-  handleDecrementQuantity: (quantity: number, setQuantity: (number:number) => void) => void;
+  handleIncrementQuantity: (
+    quantity: number,
+    setQuantity: (number: number) => void
+  ) => void;
+  handleDecrementQuantity: (
+    quantity: number,
+    setQuantity: (number: number) => void
+  ) => void;
 };
 
 export interface CartProduct {
@@ -22,4 +28,3 @@ export interface CartProduct {
   quantity: number;
   image: string;
 }
-

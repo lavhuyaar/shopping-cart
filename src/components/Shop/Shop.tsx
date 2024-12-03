@@ -11,7 +11,7 @@ function Shop() {
         <FaArrowLeft style={{width: '40px', height: '40px',position: 'relative', left: '40px', top: '20px', marginBottom: '10px'}}/>
       </Link>
       <div
-        className="products-container grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-7 p-7  pb-4"
+        className="products-container grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-7 p-7  pb-4"
         key="products-container"
       >
         {products.map((product) => (
