@@ -5,6 +5,7 @@ import { OutletContextType, Product } from "../../types/types";
 import { Link } from "react-router-dom";
 import { FaArrowLeft, FaPlus, FaMinus } from "react-icons/fa";
 import { useState } from "react";
+import { ClipLoader } from "react-spinners";
 
 //Products in-detail Page
 function ProductPage() {
@@ -22,7 +23,8 @@ function ProductPage() {
   if (!product) {
     return (
       <div className="min-h-[80vh] text-white text-4xl flex items-center justify-center font-bold w-full text-center">
-        Product loading
+        {/* Loader */}
+        <ClipLoader color="white" size={100}/> 
       </div>
     );
   }

@@ -108,7 +108,7 @@ function App() {
           handleCheckout,
         }}
       />
-      <ToastContainer />
+      <ToastContainer autoClose={1500} draggable/>
       <Footer />
     </>
   );

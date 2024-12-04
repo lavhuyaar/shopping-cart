@@ -71,9 +71,10 @@ function Cart() {
         </main>
       ) : (
         // If cart is empty
-        <main className="flex justify-center items-center text-5xl font-bold bg-[#1F1B24] text-white text-center">
-          <h3>Cart is empty :(</h3>
-          <p></p>
+        <main className="flex justify-center items-center bg-[#1F1B24] text-white text-center">
+          <h3 className="p-3 text-3xl md:text-5xl font-bold">
+            Cart is empty :(
+          </h3>
         </main>
       )}
     </>

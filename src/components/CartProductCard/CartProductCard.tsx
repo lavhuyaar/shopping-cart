@@ -47,7 +47,7 @@ function CartProductCard({ product, index }: ProductCardProps) {
         </div>
 
         {/* Title */}
-        <h2 className="text-wrap font-bold pl-2 sm:p-0">{product.title}</h2>
+        <h2 className="text-wrap font-bold pl-2 sm:p-0 md:w-[40%]">{product.title}</h2>
 
         {/* Total price of individual product */}
         <div>{parseFloat((product.price * product.quantity).toFixed(2))} $</div>
