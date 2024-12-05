@@ -1,50 +1,17 @@
-# React + TypeScript + Vite
+# lavCART - A phenomenal E-Commerce App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Technologies, libraries and APIs used in this project :-
 
-Currently, two official plugins are available:
+- [Vite](https://vite.dev/) as bundler
+- [React](https://react.dev/) as library
+- [Typescript](https://www.typescriptlang.org/) as primary language
+- [React Router](https://reactrouter.com/) for routing
+- [Fake Store API](https://fakestoreapi.com/) for fake products
+- [Toastify](https://www.npmjs.com/package/react-toastify) for snackbars
+- [React Icons](https://react-icons.github.io/react-icons/) for SVG icons
+- Spinner/Loader by [David Hu](https://www.davidhu.io/react-spinners/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This is the [final project](https://www.theodinproject.com/lessons/node-path-react-new-shopping-cart) in [React Course](https://www.theodinproject.com/paths/full-stack-javascript/courses/react) of the [Fullstack Javascript](https://www.theodinproject.com/paths/full-stack-javascript) path of [The Odin Project](https://www.theodinproject.com/).
 
-## Expanding the ESLint configuration
+## Keep up the good work Lav, still a long way to go! (05/12/2024)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
