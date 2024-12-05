@@ -12,6 +12,24 @@ function App() {
   const [cartProducts, setCartProducts] = useState<CartProduct[]>([]); //Products in cart
   const NUMBER_OF_PRODUCTS: number = 20; //Products quantity (total)
 
+  //Gets cartProducts from local storage if available
+  useEffect(() => {
+    const localCartProducts = localStorage.getItem("cartProducts"); //Gets cartProducts array (as string) from local storage
+    if (localCartProducts) { 
+      const parsedLocalCartProducts = JSON.parse(localCartProducts); //Parse it to array
+
+      if (parsedLocalCartProducts.length > 0) { //If the array is not empty
+        setCartProducts(parsedLocalCartProducts); //Sets the cartProducts state to local storage array
+        //This helps in persisting the cart products in local storage
+      }
+    }
+  }, []);
+
+  // Adds cartStorage to local storage whenever changed
+  useEffect(() => {
+    localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
+  }, [cartProducts]);
+
   //Sets products
   useEffect(() => {
     const getProducts = async () => {
@@ -45,13 +63,12 @@ function App() {
       updatedCartProducts.splice(indexOfProductInCard, 1); //Removes the existing product
 
       setCartProducts([...updatedCartProducts, productInCart]); //And pushes the copy product with updated quantity
-      notifyAddedToCart(); //Notifies that product is added to Cart
     } else {
       //Else if product was not already in Cart
-      setCartProducts((prevState) => [...prevState, product]); //Product gets added to Cart
-      notifyAddedToCart(); //Notifies that product is added to Cart
+      const updatedCartProducts = [...cartProducts, product];
+      setCartProducts(updatedCartProducts); //Product gets added to Cart
     }
-    console.log(cartProducts);
+    notifyAddedToCart(); //Notifies that product is added to Cart
   };
 
   //Removes product(s) from Cart
@@ -60,7 +77,6 @@ function App() {
     const updatedCartProducts = [...cartProducts];
     updatedCartProducts.splice(index, 1); //Removes the product
     setCartProducts(updatedCartProducts);
-    console.log(updatedCartProducts);
     notifyRemovedFromCart(); //Notifies that product has been removed from Cart
   };
 
@@ -108,7 +124,7 @@ function App() {
           handleCheckout,
         }}
       />
-      <ToastContainer autoClose={1500} draggable/>
+      <ToastContainer autoClose={1500} draggable />
       <Footer />
     </>
   );
